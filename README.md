@@ -45,13 +45,13 @@ Set `ANTHROPIC_API_KEY` (see `.env.example`) and the messaging, brief questions,
 
 ## Modules
 
-This is a clean-room rebuild. I did not keep any code, data, or workflows from previous employers. Every line here was written fresh against synthetic data.
+This is a clean-room rebuild. Every line here was written fresh against synthetic data.
 
 | Stage | Module | What it does | Production version I ran |
 |---|---|---|---|
 | TOFU | `signals/detect.js` | Scans raw site HTML for competitor and stack fingerprints, open jobs for buying-motion roles, intent data (6sense-shaped) for active research | Scraper across a full Salesforce territory that detected competitor embed code in page source and wrote matches back to accounts |
 | TOFU | `scoring/score.js` | Noisy-OR fit score using **learned** per-signal meeting rates, relative A/B/C tiers | Territory scoring and tiering for prioritizing a book of accounts |
-| TOFU | `enrichment/waterfall.js` | Providers tried cheapest-first, stop at first verified email, cost tracked per record, volume cost model before any bulk run | Clay waterfall enrichment |
+| TOFU | `enrichment/waterfall.js` | Providers tried cheapest-first, stop at first verified email, cost tracked per record, volume cost model before any bulk run | Waterfall enrichment for contact discovery and email verification |
 | TOFU | `messaging/personalize.js` | Picks a message angle, writes the first line, maps it to Salesforce and HubSpot fields so SDRs get it as a merge field | Signal-based personalized messaging synced to CRM fields for SDR sequences |
 | TOFU | `pages/landingPage.js` | Per-prospect landing page built from the same signals and angle as the email | Custom landing pages for every prospect, built in Lovable |
 | TOFU | `proof/snapshot.js` | Takes a topic the prospect cares about, counts hits in an internal dataset they cannot search themselves, screenshots the results with Playwright, and embeds the image in the email ("data centers: 2,576 mentions across 23 regions") | Playwright automation that screenshotted our internal product for a prospect's topic, such as how many times data centers were mentioned in bills, and put the screenshot in the email |
@@ -76,7 +76,11 @@ This is a clean-room rebuild. I did not keep any code, data, or workflows from p
 
 ## Production stack this mirrors
 
-Claude Code to build and run the automations, Salesforce as the system of record, Google Workspace (Sheets, Apps Script, Gmail) to connect them, Clay for waterfall enrichment, Playwright for product screenshots, Blotato for social publishing, Search Console for search demand, Slack as the rep interface, Gong for calls, Lovable for prospect pages. This repo replaces each with a mock behind the same interface so it runs anywhere.
+**Sales system:** Salesforce as the system of record, Gong for calls, Google Workspace (Sheets, Apps Script, Gmail) as the glue, Qualified for inbound, Lovable for prospect pages, n8n for orchestration and the Slack bots, Claude Code to build and run the automations (including Playwright screenshots).
+
+**Marketing system:** my own content and search work, published through Blotato with Search Console for search demand.
+
+This repo replaces each with a mock behind the same interface so it runs anywhere. HubSpot and 6sense adapters are included because they are common in the stacks this would plug into.
 
 ## Design decisions
 
