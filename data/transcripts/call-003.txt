@@ -1,0 +1,10 @@
+account: ACC-003
+seller: Sam
+---
+Sam: Last time you said renewals were the priority. Is that still true?
+Casey: Yes. New logo is fine. Expansion is where we leave money behind.
+Sam: Where does expansion come from today?
+Casey: Mostly luck. Our EMEA team is also running a totally different process, another region we never get visibility into.
+Sam: If EMEA used the same signals, what would change?
+Casey: We would know which accounts to expand before the QBR, not after. Timing wise this is not a priority until next quarter though.
+Sam: Understood. I will set up a short working session in January with you and the EMEA lead.

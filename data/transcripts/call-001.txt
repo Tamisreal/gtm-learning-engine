@@ -1,0 +1,13 @@
+account: ACC-001
+seller: Sam
+---
+Sam: Thanks for making time. You mentioned pipeline has been uneven since Q2. What changed?
+Taylor: We added four SDRs but meetings per rep went down. Our reps live in Salesforce but sequences run in BlastMail, so nothing syncs cleanly.
+Sam: So reporting on what actually books meetings is guesswork right now?
+Taylor: Pretty much. Leadership asks which messages work and I export three spreadsheets.
+Sam: What would a good quarter look like?
+Taylor: Same headcount, 30 percent more first meetings. Budget is tight though, the CFO froze new tools until the renewal.
+Taylor: Separately, our customer success team also struggles with renewal risk. They have no early warning at all.
+Sam: That is useful. Who else should see this before we go further?
+Taylor: I need to run it by my VP, Riley.
+Sam: Makes sense. I will send a one-page summary and schedule 30 minutes with Riley next week.

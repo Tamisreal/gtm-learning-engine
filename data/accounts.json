@@ -1,0 +1,1276 @@
+[
+  {
+    "id": "ACC-001",
+    "name": "Granite Payments",
+    "domain": "granitepayments.example",
+    "industry": "Healthtech",
+    "employees": 111,
+    "html": "<html><head><title>Granite Payments</title>\n<script src=\"https://j.6sc.co/6si.min.js\"></script>\n<script src=\"https://app.gong.io/js/x.js\"></script>\n</head><body><h1>Granite Payments</h1></body></html>",
+    "openJobs": [
+      "Customer Success Manager"
+    ],
+    "intent": null,
+    "contacts": [
+      {
+        "name": "Taylor Silva",
+        "title": "VP Sales",
+        "email": "taylor.silva@granitepayments.example"
+      },
+      {
+        "name": "Avery Rossi",
+        "title": "VP Sales",
+        "email": "avery.rossi@granitepayments.example"
+      }
+    ]
+  },
+  {
+    "id": "ACC-002",
+    "name": "Clear Logistics",
+    "domain": "clearlogistics.example",
+    "industry": "Fintech",
+    "employees": 196,
+    "html": "<html><head><title>Clear Logistics</title>\n<div id=\"pf-widget\" data-src=\"pipeforge\"></div>\n<script src=\"https://j.6sc.co/6si.min.js\"></script>\n<link rel=\"preconnect\" href=\"https://login.salesforce.com\">\n</head><body><h1>Clear Logistics</h1></body></html>",
+    "openJobs": [
+      "Software Engineer",
+      "Account Executive"
+    ],
+    "intent": {
+      "topic": "data enrichment",
+      "score": 68
+    },
+    "contacts": [
+      {
+        "name": "Morgan Chen",
+        "title": "Sales Development Manager",
+        "email": "morgan.chen@clearlogistics.example"
+      },
+      {
+        "name": "Quinn Garcia",
+        "title": "Head of Revenue Operations",
+        "email": "quinn.garcia@clearlogistics.example"
+      }
+    ]
+  },
+  {
+    "id": "ACC-003",
+    "name": "Granite Systems",
+    "domain": "granitesystems.example",
+    "industry": "Cybersecurity",
+    "employees": 1147,
+    "html": "<html><head><title>Granite Systems</title>\n<script src=\"https://j.6sc.co/6si.min.js\"></script>\n</head><body><h1>Granite Systems</h1></body></html>",
+    "openJobs": [
+      "SDR",
+      "BDR Team Lead",
+      "Demand Gen Manager"
+    ],
+    "intent": {
+      "topic": "data enrichment",
+      "score": 97
+    },
+    "contacts": [
+      {
+        "name": "Casey Chen",
+        "title": "VP Sales",
+        "email": "casey.chen@granitesystems.example"
+      },
+      {
+        "name": "Quinn Rossi",
+        "title": "VP Sales",
+        "email": "quinn.rossi@granitesystems.example"
+      }
+    ]
+  },
+  {
+    "id": "ACC-004",
+    "name": "Pioneer Payments",
+    "domain": "pioneerpayments.example",
+    "industry": "B2B SaaS",
+    "employees": 1947,
+    "html": "<html><head><title>Pioneer Payments</title>\n</head><body><h1>Pioneer Payments</h1></body></html>",
+    "openJobs": [],
+    "intent": {
+      "topic": "sales engagement platform",
+      "score": 88
+    },
+    "contacts": [
+      {
+        "name": "Morgan Chen",
+        "title": "Sales Development Manager",
+        "email": "morgan.chen@pioneerpayments.example"
+      },
+      {
+        "name": "Jordan Okafor",
+        "title": "Sales Development Manager",
+        "email": "jordan.okafor@pioneerpayments.example"
+      }
+    ]
+  },
+  {
+    "id": "ACC-005",
+    "name": "Iron Cloud",
+    "domain": "ironcloud.example",
+    "industry": "Fintech",
+    "employees": 1228,
+    "html": "<html><head><title>Iron Cloud</title>\n<script src=\"//js.hs-scripts.com/1234.js\"></script>\n<link rel=\"preconnect\" href=\"https://login.salesforce.com\">\n</head><body><h1>Iron Cloud</h1></body></html>",
+    "openJobs": [
+      "Customer Success Manager"
+    ],
+    "intent": null,
+    "contacts": [
+      {
+        "name": "Morgan Lee",
+        "title": "CRO",
+        "email": "morgan.lee@ironcloud.example"
+      },
+      {
+        "name": "Taylor Rossi",
+        "title": "Sales Development Manager",
+        "email": "taylor.rossi@ironcloud.example"
+      }
+    ]
+  },
+  {
+    "id": "ACC-006",
+    "name": "Harbor Health",
+    "domain": "harborhealth.example",
+    "industry": "Healthtech",
+    "employees": 1241,
+    "html": "<html><head><title>Harbor Health</title>\n<div id=\"pf-widget\" data-src=\"pipeforge\"></div>\n<script src=\"https://j.6sc.co/6si.min.js\"></script>\n<link rel=\"preconnect\" href=\"https://login.salesforce.com\">\n</head><body><h1>Harbor Health</h1></body></html>",
+    "openJobs": [
+      "Revenue Operations Manager",
+      "Account Executive",
+      "Marketing Ops Specialist"
+    ],
+    "intent": {
+      "topic": "pipeline generation",
+      "score": 77
+    },
+    "contacts": [
+      {
+        "name": "Avery Silva",
+        "title": "Head of Revenue Operations",
+        "email": "avery.silva@harborhealth.example"
+      },
+      {
+        "name": "Morgan Rossi",
+        "title": "Head of Revenue Operations",
+        "email": "morgan.rossi@harborhealth.example"
+      }
+    ]
+  },
+  {
+    "id": "ACC-007",
+    "name": "Bright Labs",
+    "domain": "brightlabs.example",
+    "industry": "Cybersecurity",
+    "employees": 1075,
+    "html": "<html><head><title>Bright Labs</title>\n<script src=\"https://cdn.legacycrm.com/lcrm-embed.js\"></script>\n<script src=\"//js.hs-scripts.com/1234.js\"></script>\n<script src=\"https://app.gong.io/js/x.js\"></script>\n</head><body><h1>Bright Labs</h1></body></html>",
+    "openJobs": [
+      "Revenue Operations Manager",
+      "Demand Gen Manager",
+      "Account Executive"
+    ],
+    "intent": null,
+    "contacts": [
+      {
+        "name": "Morgan Chen",
+        "title": "Sales Development Manager",
+        "email": "morgan.chen@brightlabs.example"
+      },
+      {
+        "name": "Drew Okafor",
+        "title": "VP Sales",
+        "email": "drew.okafor@brightlabs.example"
+      }
+    ]
+  },
+  {
+    "id": "ACC-008",
+    "name": "Pioneer Robotics",
+    "domain": "pioneerrobotics.example",
+    "industry": "Cybersecurity",
+    "employees": 1219,
+    "html": "<html><head><title>Pioneer Robotics</title>\n<script src=\"//js.hs-scripts.com/1234.js\"></script>\n<script src=\"https://app.gong.io/js/x.js\"></script>\n</head><body><h1>Pioneer Robotics</h1></body></html>",
+    "openJobs": [
+      "Customer Success Manager"
+    ],
+    "intent": {
+      "topic": "sales engagement platform",
+      "score": 80
+    },
+    "contacts": [
+      {
+        "name": "Taylor Chen",
+        "title": "Sales Development Manager",
+        "email": "taylor.chen@pioneerrobotics.example"
+      },
+      {
+        "name": "Drew Silva",
+        "title": "Sales Development Manager",
+        "email": "drew.silva@pioneerrobotics.example"
+      }
+    ]
+  },
+  {
+    "id": "ACC-009",
+    "name": "Summit Payments",
+    "domain": "summitpayments.example",
+    "industry": "B2B SaaS",
+    "employees": 617,
+    "html": "<html><head><title>Summit Payments</title>\n</head><body><h1>Summit Payments</h1></body></html>",
+    "openJobs": [
+      "BDR Team Lead",
+      "Software Engineer",
+      "Account Executive"
+    ],
+    "intent": null,
+    "contacts": [
+      {
+        "name": "Drew Okafor",
+        "title": "CRO",
+        "email": "drew.okafor@summitpayments.example"
+      },
+      {
+        "name": "Riley Garcia",
+        "title": "VP Sales",
+        "email": "riley.garcia@summitpayments.example"
+      }
+    ]
+  },
+  {
+    "id": "ACC-010",
+    "name": "Harbor Labs",
+    "domain": "harborlabs.example",
+    "industry": "B2B SaaS",
+    "employees": 339,
+    "html": "<html><head><title>Harbor Labs</title>\n<link rel=\"preconnect\" href=\"https://login.salesforce.com\">\n</head><body><h1>Harbor Labs</h1></body></html>",
+    "openJobs": [
+      "Customer Success Manager"
+    ],
+    "intent": null,
+    "contacts": [
+      {
+        "name": "Casey Novak",
+        "title": "Director of Marketing",
+        "email": "casey.novak@harborlabs.example"
+      },
+      {
+        "name": "Taylor Okafor",
+        "title": "VP Sales",
+        "email": "taylor.okafor@harborlabs.example"
+      }
+    ]
+  },
+  {
+    "id": "ACC-011",
+    "name": "Vector Logistics",
+    "domain": "vectorlogistics.example",
+    "industry": "B2B SaaS",
+    "employees": 166,
+    "html": "<html><head><title>Vector Logistics</title>\n<link rel=\"preconnect\" href=\"https://login.salesforce.com\">\n</head><body><h1>Vector Logistics</h1></body></html>",
+    "openJobs": [
+      "Revenue Operations Manager",
+      "Account Executive"
+    ],
+    "intent": null,
+    "contacts": [
+      {
+        "name": "Reese Novak",
+        "title": "Sales Development Manager",
+        "email": "reese.novak@vectorlogistics.example"
+      },
+      {
+        "name": "Quinn Patel",
+        "title": "VP Sales",
+        "email": "quinn.patel@vectorlogistics.example"
+      }
+    ]
+  },
+  {
+    "id": "ACC-012",
+    "name": "Clear Systems",
+    "domain": "clearsystems.example",
+    "industry": "Healthtech",
+    "employees": 1513,
+    "html": "<html><head><title>Clear Systems</title>\n<link rel=\"preconnect\" href=\"https://login.salesforce.com\">\n</head><body><h1>Clear Systems</h1></body></html>",
+    "openJobs": [],
+    "intent": null,
+    "contacts": [
+      {
+        "name": "Drew Brooks",
+        "title": "CRO",
+        "email": "drew.brooks@clearsystems.example"
+      },
+      {
+        "name": "Quinn Rossi",
+        "title": "Head of Revenue Operations",
+        "email": "quinn.rossi@clearsystems.example"
+      }
+    ]
+  },
+  {
+    "id": "ACC-013",
+    "name": "Bright Systems",
+    "domain": "brightsystems.example",
+    "industry": "B2B SaaS",
+    "employees": 609,
+    "html": "<html><head><title>Bright Systems</title>\n</head><body><h1>Bright Systems</h1></body></html>",
+    "openJobs": [],
+    "intent": null,
+    "contacts": [
+      {
+        "name": "Morgan Novak",
+        "title": "Sales Development Manager",
+        "email": "morgan.novak@brightsystems.example"
+      },
+      {
+        "name": "Taylor Rossi",
+        "title": "CRO",
+        "email": "taylor.rossi@brightsystems.example"
+      }
+    ]
+  },
+  {
+    "id": "ACC-014",
+    "name": "Vector Payments",
+    "domain": "vectorpayments.example",
+    "industry": "B2B SaaS",
+    "employees": 286,
+    "html": "<html><head><title>Vector Payments</title>\n<form class=\"bm-form\" action=\"https://blastmail.io/f/123\">\n<script src=\"https://app.gong.io/js/x.js\"></script>\n</head><body><h1>Vector Payments</h1></body></html>",
+    "openJobs": [
+      "Software Engineer"
+    ],
+    "intent": null,
+    "contacts": [
+      {
+        "name": "Avery Silva",
+        "title": "CRO",
+        "email": "avery.silva@vectorpayments.example"
+      },
+      {
+        "name": "Quinn Lee",
+        "title": "VP Sales",
+        "email": "quinn.lee@vectorpayments.example"
+      }
+    ]
+  },
+  {
+    "id": "ACC-015",
+    "name": "Summit Robotics",
+    "domain": "summitrobotics.example",
+    "industry": "Healthtech",
+    "employees": 1204,
+    "html": "<html><head><title>Summit Robotics</title>\n<script src=\"https://j.6sc.co/6si.min.js\"></script>\n<link rel=\"preconnect\" href=\"https://login.salesforce.com\">\n<script src=\"https://app.gong.io/js/x.js\"></script>\n</head><body><h1>Summit Robotics</h1></body></html>",
+    "openJobs": [
+      "Customer Success Manager"
+    ],
+    "intent": null,
+    "contacts": [
+      {
+        "name": "Casey Okafor",
+        "title": "Head of Revenue Operations",
+        "email": "casey.okafor@summitrobotics.example"
+      },
+      {
+        "name": "Casey Chen",
+        "title": "Director of Marketing",
+        "email": "casey.chen@summitrobotics.example"
+      }
+    ]
+  },
+  {
+    "id": "ACC-016",
+    "name": "Blue Cloud",
+    "domain": "bluecloud.example",
+    "industry": "Logistics",
+    "employees": 892,
+    "html": "<html><head><title>Blue Cloud</title>\n<script src=\"https://j.6sc.co/6si.min.js\"></script>\n<link rel=\"preconnect\" href=\"https://login.salesforce.com\">\n<script src=\"https://app.gong.io/js/x.js\"></script>\n</head><body><h1>Blue Cloud</h1></body></html>",
+    "openJobs": [],
+    "intent": {
+      "topic": "data enrichment",
+      "score": 92
+    },
+    "contacts": [
+      {
+        "name": "Morgan Garcia",
+        "title": "CRO",
+        "email": "morgan.garcia@bluecloud.example"
+      },
+      {
+        "name": "Quinn Patel",
+        "title": "VP Sales",
+        "email": "quinn.patel@bluecloud.example"
+      }
+    ]
+  },
+  {
+    "id": "ACC-017",
+    "name": "Pioneer Cloud",
+    "domain": "pioneercloud.example",
+    "industry": "Fintech",
+    "employees": 1438,
+    "html": "<html><head><title>Pioneer Cloud</title>\n<script src=\"https://j.6sc.co/6si.min.js\"></script>\n<link rel=\"preconnect\" href=\"https://login.salesforce.com\">\n</head><body><h1>Pioneer Cloud</h1></body></html>",
+    "openJobs": [
+      "Software Engineer"
+    ],
+    "intent": {
+      "topic": "conversation intelligence",
+      "score": 81
+    },
+    "contacts": [
+      {
+        "name": "Reese Lee",
+        "title": "Sales Development Manager",
+        "email": "reese.lee@pioneercloud.example"
+      },
+      {
+        "name": "Quinn Garcia",
+        "title": "VP Sales",
+        "email": "quinn.garcia@pioneercloud.example"
+      }
+    ]
+  },
+  {
+    "id": "ACC-018",
+    "name": "Cedar Analytics",
+    "domain": "cedaranalytics.example",
+    "industry": "Fintech",
+    "employees": 1060,
+    "html": "<html><head><title>Cedar Analytics</title>\n<script src=\"https://j.6sc.co/6si.min.js\"></script>\n</head><body><h1>Cedar Analytics</h1></body></html>",
+    "openJobs": [
+      "Revenue Operations Manager",
+      "BDR Team Lead",
+      "Demand Gen Manager"
+    ],
+    "intent": null,
+    "contacts": [
+      {
+        "name": "Avery Silva",
+        "title": "VP Sales",
+        "email": "avery.silva@cedaranalytics.example"
+      },
+      {
+        "name": "Parker Rossi",
+        "title": "Head of Revenue Operations",
+        "email": "parker.rossi@cedaranalytics.example"
+      }
+    ]
+  },
+  {
+    "id": "ACC-019",
+    "name": "Cedar Payments",
+    "domain": "cedarpayments.example",
+    "industry": "Healthtech",
+    "employees": 977,
+    "html": "<html><head><title>Cedar Payments</title>\n<script src=\"//js.hs-scripts.com/1234.js\"></script>\n<link rel=\"preconnect\" href=\"https://login.salesforce.com\">\n</head><body><h1>Cedar Payments</h1></body></html>",
+    "openJobs": [
+      "Software Engineer",
+      "Marketing Ops Specialist"
+    ],
+    "intent": null,
+    "contacts": [
+      {
+        "name": "Taylor Rossi",
+        "title": "VP Sales",
+        "email": "taylor.rossi@cedarpayments.example"
+      },
+      {
+        "name": "Quinn Novak",
+        "title": "Director of Marketing",
+        "email": "quinn.novak@cedarpayments.example"
+      }
+    ]
+  },
+  {
+    "id": "ACC-020",
+    "name": "North Cloud",
+    "domain": "northcloud.example",
+    "industry": "Healthtech",
+    "employees": 66,
+    "html": "<html><head><title>North Cloud</title>\n<div id=\"pf-widget\" data-src=\"pipeforge\"></div>\n<script src=\"//js.hs-scripts.com/1234.js\"></script>\n</head><body><h1>North Cloud</h1></body></html>",
+    "openJobs": [
+      "Software Engineer"
+    ],
+    "intent": null,
+    "contacts": [
+      {
+        "name": "Reese Patel",
+        "title": "CRO",
+        "email": "reese.patel@northcloud.example"
+      },
+      {
+        "name": "Quinn Brooks",
+        "title": "Sales Development Manager",
+        "email": "quinn.brooks@northcloud.example"
+      }
+    ]
+  },
+  {
+    "id": "ACC-021",
+    "name": "Pioneer Logistics",
+    "domain": "pioneerlogistics.example",
+    "industry": "Cybersecurity",
+    "employees": 935,
+    "html": "<html><head><title>Pioneer Logistics</title>\n</head><body><h1>Pioneer Logistics</h1></body></html>",
+    "openJobs": [],
+    "intent": {
+      "topic": "sales engagement platform",
+      "score": 100
+    },
+    "contacts": [
+      {
+        "name": "Jordan Okafor",
+        "title": "Sales Development Manager",
+        "email": "jordan.okafor@pioneerlogistics.example"
+      },
+      {
+        "name": "Taylor Chen",
+        "title": "Head of Revenue Operations",
+        "email": "taylor.chen@pioneerlogistics.example"
+      }
+    ]
+  },
+  {
+    "id": "ACC-022",
+    "name": "Vector Systems",
+    "domain": "vectorsystems.example",
+    "industry": "Logistics",
+    "employees": 664,
+    "html": "<html><head><title>Vector Systems</title>\n<script src=\"https://cdn.legacycrm.com/lcrm-embed.js\"></script>\n<link rel=\"preconnect\" href=\"https://login.salesforce.com\">\n<script src=\"https://app.gong.io/js/x.js\"></script>\n</head><body><h1>Vector Systems</h1></body></html>",
+    "openJobs": [],
+    "intent": {
+      "topic": "data enrichment",
+      "score": 95
+    },
+    "contacts": [
+      {
+        "name": "Casey Novak",
+        "title": "Sales Development Manager",
+        "email": "casey.novak@vectorsystems.example"
+      },
+      {
+        "name": "Avery Kim",
+        "title": "Sales Development Manager",
+        "email": "avery.kim@vectorsystems.example"
+      }
+    ]
+  },
+  {
+    "id": "ACC-023",
+    "name": "Vector Health",
+    "domain": "vectorhealth.example",
+    "industry": "B2B SaaS",
+    "employees": 236,
+    "html": "<html><head><title>Vector Health</title>\n<script src=\"//js.hs-scripts.com/1234.js\"></script>\n</head><body><h1>Vector Health</h1></body></html>",
+    "openJobs": [
+      "Software Engineer",
+      "Marketing Ops Specialist"
+    ],
+    "intent": null,
+    "contacts": [
+      {
+        "name": "Quinn Novak",
+        "title": "CRO",
+        "email": "quinn.novak@vectorhealth.example"
+      },
+      {
+        "name": "Drew Chen",
+        "title": "VP Sales",
+        "email": "drew.chen@vectorhealth.example"
+      }
+    ]
+  },
+  {
+    "id": "ACC-024",
+    "name": "North Labs",
+    "domain": "northlabs.example",
+    "industry": "Logistics",
+    "employees": 1479,
+    "html": "<html><head><title>North Labs</title>\n<div id=\"pf-widget\" data-src=\"pipeforge\"></div>\n<script src=\"https://j.6sc.co/6si.min.js\"></script>\n</head><body><h1>North Labs</h1></body></html>",
+    "openJobs": [
+      "SDR",
+      "Software Engineer"
+    ],
+    "intent": null,
+    "contacts": [
+      {
+        "name": "Avery Novak",
+        "title": "Director of Marketing",
+        "email": "avery.novak@northlabs.example"
+      },
+      {
+        "name": "Quinn Patel",
+        "title": "VP Sales",
+        "email": "quinn.patel@northlabs.example"
+      }
+    ]
+  },
+  {
+    "id": "ACC-025",
+    "name": "Clear Security",
+    "domain": "clearsecurity.example",
+    "industry": "Fintech",
+    "employees": 1928,
+    "html": "<html><head><title>Clear Security</title>\n</head><body><h1>Clear Security</h1></body></html>",
+    "openJobs": [],
+    "intent": {
+      "topic": "pipeline generation",
+      "score": 99
+    },
+    "contacts": [
+      {
+        "name": "Quinn Brooks",
+        "title": "VP Sales",
+        "email": "quinn.brooks@clearsecurity.example"
+      },
+      {
+        "name": "Taylor Silva",
+        "title": "Sales Development Manager",
+        "email": "taylor.silva@clearsecurity.example"
+      }
+    ]
+  },
+  {
+    "id": "ACC-026",
+    "name": "Iron Security",
+    "domain": "ironsecurity.example",
+    "industry": "Logistics",
+    "employees": 937,
+    "html": "<html><head><title>Iron Security</title>\n<link rel=\"preconnect\" href=\"https://login.salesforce.com\">\n<script src=\"https://app.gong.io/js/x.js\"></script>\n</head><body><h1>Iron Security</h1></body></html>",
+    "openJobs": [
+      "Marketing Ops Specialist"
+    ],
+    "intent": null,
+    "contacts": [
+      {
+        "name": "Taylor Novak",
+        "title": "Sales Development Manager",
+        "email": "taylor.novak@ironsecurity.example"
+      },
+      {
+        "name": "Quinn Rossi",
+        "title": "Director of Marketing",
+        "email": "quinn.rossi@ironsecurity.example"
+      }
+    ]
+  },
+  {
+    "id": "ACC-027",
+    "name": "Iron Logistics",
+    "domain": "ironlogistics.example",
+    "industry": "Fintech",
+    "employees": 1775,
+    "html": "<html><head><title>Iron Logistics</title>\n<link rel=\"preconnect\" href=\"https://login.salesforce.com\">\n<script src=\"https://app.gong.io/js/x.js\"></script>\n</head><body><h1>Iron Logistics</h1></body></html>",
+    "openJobs": [
+      "BDR Team Lead",
+      "Account Executive"
+    ],
+    "intent": {
+      "topic": "data enrichment",
+      "score": 74
+    },
+    "contacts": [
+      {
+        "name": "Morgan Silva",
+        "title": "Director of Marketing",
+        "email": "morgan.silva@ironlogistics.example"
+      },
+      {
+        "name": "Drew Lee",
+        "title": "VP Sales",
+        "email": "drew.lee@ironlogistics.example"
+      }
+    ]
+  },
+  {
+    "id": "ACC-028",
+    "name": "Pioneer Security",
+    "domain": "pioneersecurity.example",
+    "industry": "Logistics",
+    "employees": 1073,
+    "html": "<html><head><title>Pioneer Security</title>\n<script src=\"//js.hs-scripts.com/1234.js\"></script>\n</head><body><h1>Pioneer Security</h1></body></html>",
+    "openJobs": [
+      "Demand Gen Manager",
+      "Marketing Ops Specialist",
+      "Customer Success Manager"
+    ],
+    "intent": null,
+    "contacts": [
+      {
+        "name": "Jordan Novak",
+        "title": "Director of Marketing",
+        "email": "jordan.novak@pioneersecurity.example"
+      },
+      {
+        "name": "Quinn Brooks",
+        "title": "Director of Marketing",
+        "email": "quinn.brooks@pioneersecurity.example"
+      }
+    ]
+  },
+  {
+    "id": "ACC-029",
+    "name": "Blue Analytics",
+    "domain": "blueanalytics.example",
+    "industry": "Healthtech",
+    "employees": 133,
+    "html": "<html><head><title>Blue Analytics</title>\n</head><body><h1>Blue Analytics</h1></body></html>",
+    "openJobs": [],
+    "intent": null,
+    "contacts": [
+      {
+        "name": "Quinn Chen",
+        "title": "Director of Marketing",
+        "email": "quinn.chen@blueanalytics.example"
+      },
+      {
+        "name": "Avery Brooks",
+        "title": "Head of Revenue Operations",
+        "email": "avery.brooks@blueanalytics.example"
+      }
+    ]
+  },
+  {
+    "id": "ACC-030",
+    "name": "Blue Logistics",
+    "domain": "bluelogistics.example",
+    "industry": "Logistics",
+    "employees": 1758,
+    "html": "<html><head><title>Blue Logistics</title>\n<form class=\"bm-form\" action=\"https://blastmail.io/f/123\">\n</head><body><h1>Blue Logistics</h1></body></html>",
+    "openJobs": [],
+    "intent": {
+      "topic": "conversation intelligence",
+      "score": 75
+    },
+    "contacts": [
+      {
+        "name": "Riley Brooks",
+        "title": "VP Sales",
+        "email": "riley.brooks@bluelogistics.example"
+      },
+      {
+        "name": "Reese Novak",
+        "title": "VP Sales",
+        "email": "reese.novak@bluelogistics.example"
+      }
+    ]
+  },
+  {
+    "id": "ACC-031",
+    "name": "Iron Robotics",
+    "domain": "ironrobotics.example",
+    "industry": "Healthtech",
+    "employees": 1654,
+    "html": "<html><head><title>Iron Robotics</title>\n<div id=\"pf-widget\" data-src=\"pipeforge\"></div>\n<link rel=\"preconnect\" href=\"https://login.salesforce.com\">\n</head><body><h1>Iron Robotics</h1></body></html>",
+    "openJobs": [
+      "Revenue Operations Manager",
+      "Software Engineer"
+    ],
+    "intent": {
+      "topic": "sales engagement platform",
+      "score": 88
+    },
+    "contacts": [
+      {
+        "name": "Reese Brooks",
+        "title": "Sales Development Manager",
+        "email": "reese.brooks@ironrobotics.example"
+      },
+      {
+        "name": "Drew Garcia",
+        "title": "CRO",
+        "email": "drew.garcia@ironrobotics.example"
+      }
+    ]
+  },
+  {
+    "id": "ACC-032",
+    "name": "Vector Analytics",
+    "domain": "vectoranalytics.example",
+    "industry": "Cybersecurity",
+    "employees": 707,
+    "html": "<html><head><title>Vector Analytics</title>\n<script src=\"https://cdn.legacycrm.com/lcrm-embed.js\"></script>\n<script src=\"https://app.gong.io/js/x.js\"></script>\n</head><body><h1>Vector Analytics</h1></body></html>",
+    "openJobs": [
+      "Demand Gen Manager"
+    ],
+    "intent": {
+      "topic": "pipeline generation",
+      "score": 96
+    },
+    "contacts": [
+      {
+        "name": "Parker Novak",
+        "title": "Head of Revenue Operations",
+        "email": "parker.novak@vectoranalytics.example"
+      },
+      {
+        "name": "Jordan Rossi",
+        "title": "VP Sales",
+        "email": "jordan.rossi@vectoranalytics.example"
+      }
+    ]
+  },
+  {
+    "id": "ACC-033",
+    "name": "Vector Security",
+    "domain": "vectorsecurity.example",
+    "industry": "B2B SaaS",
+    "employees": 500,
+    "html": "<html><head><title>Vector Security</title>\n<script src=\"//js.hs-scripts.com/1234.js\"></script>\n<link rel=\"preconnect\" href=\"https://login.salesforce.com\">\n<script src=\"https://app.gong.io/js/x.js\"></script>\n</head><body><h1>Vector Security</h1></body></html>",
+    "openJobs": [
+      "Account Executive"
+    ],
+    "intent": null,
+    "contacts": [
+      {
+        "name": "Avery Rossi",
+        "title": "Head of Revenue Operations",
+        "email": "avery.rossi@vectorsecurity.example"
+      },
+      {
+        "name": "Avery Patel",
+        "title": "Sales Development Manager",
+        "email": "avery.patel@vectorsecurity.example"
+      }
+    ]
+  },
+  {
+    "id": "ACC-034",
+    "name": "Bright Payments",
+    "domain": "brightpayments.example",
+    "industry": "Cybersecurity",
+    "employees": 1816,
+    "html": "<html><head><title>Bright Payments</title>\n<script src=\"https://app.gong.io/js/x.js\"></script>\n</head><body><h1>Bright Payments</h1></body></html>",
+    "openJobs": [
+      "Customer Success Manager"
+    ],
+    "intent": null,
+    "contacts": [
+      {
+        "name": "Taylor Okafor",
+        "title": "VP Sales",
+        "email": "taylor.okafor@brightpayments.example"
+      },
+      {
+        "name": "Parker Brooks",
+        "title": "Director of Marketing",
+        "email": "parker.brooks@brightpayments.example"
+      }
+    ]
+  },
+  {
+    "id": "ACC-035",
+    "name": "Blue Payments",
+    "domain": "bluepayments.example",
+    "industry": "Logistics",
+    "employees": 225,
+    "html": "<html><head><title>Blue Payments</title>\n<script src=\"//js.hs-scripts.com/1234.js\"></script>\n</head><body><h1>Blue Payments</h1></body></html>",
+    "openJobs": [
+      "Demand Gen Manager"
+    ],
+    "intent": {
+      "topic": "pipeline generation",
+      "score": 71
+    },
+    "contacts": [
+      {
+        "name": "Casey Lee",
+        "title": "CRO",
+        "email": "casey.lee@bluepayments.example"
+      },
+      {
+        "name": "Riley Garcia",
+        "title": "VP Sales",
+        "email": "riley.garcia@bluepayments.example"
+      }
+    ]
+  },
+  {
+    "id": "ACC-036",
+    "name": "Atlas Labs",
+    "domain": "atlaslabs.example",
+    "industry": "Healthtech",
+    "employees": 1978,
+    "html": "<html><head><title>Atlas Labs</title>\n</head><body><h1>Atlas Labs</h1></body></html>",
+    "openJobs": [],
+    "intent": {
+      "topic": "CRM migration",
+      "score": 76
+    },
+    "contacts": [
+      {
+        "name": "Casey Silva",
+        "title": "Head of Revenue Operations",
+        "email": "casey.silva@atlaslabs.example"
+      },
+      {
+        "name": "Riley Silva",
+        "title": "CRO",
+        "email": "riley.silva@atlaslabs.example"
+      }
+    ]
+  },
+  {
+    "id": "ACC-037",
+    "name": "Granite Labs",
+    "domain": "granitelabs.example",
+    "industry": "Fintech",
+    "employees": 164,
+    "html": "<html><head><title>Granite Labs</title>\n<script src=\"https://j.6sc.co/6si.min.js\"></script>\n<link rel=\"preconnect\" href=\"https://login.salesforce.com\">\n</head><body><h1>Granite Labs</h1></body></html>",
+    "openJobs": [
+      "Revenue Operations Manager",
+      "SDR",
+      "Demand Gen Manager",
+      "Account Executive"
+    ],
+    "intent": null,
+    "contacts": [
+      {
+        "name": "Reese Rossi",
+        "title": "Sales Development Manager",
+        "email": "reese.rossi@granitelabs.example"
+      },
+      {
+        "name": "Casey Rossi",
+        "title": "Head of Revenue Operations",
+        "email": "casey.rossi@granitelabs.example"
+      }
+    ]
+  },
+  {
+    "id": "ACC-038",
+    "name": "Atlas Cloud",
+    "domain": "atlascloud.example",
+    "industry": "B2B SaaS",
+    "employees": 1686,
+    "html": "<html><head><title>Atlas Cloud</title>\n<script src=\"https://j.6sc.co/6si.min.js\"></script>\n</head><body><h1>Atlas Cloud</h1></body></html>",
+    "openJobs": [],
+    "intent": null,
+    "contacts": [
+      {
+        "name": "Drew Lee",
+        "title": "Sales Development Manager",
+        "email": "drew.lee@atlascloud.example"
+      },
+      {
+        "name": "Reese Rossi",
+        "title": "Head of Revenue Operations",
+        "email": "reese.rossi@atlascloud.example"
+      }
+    ]
+  },
+  {
+    "id": "ACC-039",
+    "name": "Summit Labs",
+    "domain": "summitlabs.example",
+    "industry": "Cybersecurity",
+    "employees": 1303,
+    "html": "<html><head><title>Summit Labs</title>\n<script src=\"https://app.gong.io/js/x.js\"></script>\n</head><body><h1>Summit Labs</h1></body></html>",
+    "openJobs": [
+      "Account Executive",
+      "Marketing Ops Specialist"
+    ],
+    "intent": {
+      "topic": "pipeline generation",
+      "score": 100
+    },
+    "contacts": [
+      {
+        "name": "Taylor Garcia",
+        "title": "Head of Revenue Operations",
+        "email": "taylor.garcia@summitlabs.example"
+      },
+      {
+        "name": "Casey Garcia",
+        "title": "Sales Development Manager",
+        "email": "casey.garcia@summitlabs.example"
+      }
+    ]
+  },
+  {
+    "id": "ACC-040",
+    "name": "Summit Cloud",
+    "domain": "summitcloud.example",
+    "industry": "B2B SaaS",
+    "employees": 1594,
+    "html": "<html><head><title>Summit Cloud</title>\n<form class=\"bm-form\" action=\"https://blastmail.io/f/123\">\n</head><body><h1>Summit Cloud</h1></body></html>",
+    "openJobs": [
+      "Customer Success Manager"
+    ],
+    "intent": {
+      "topic": "sales engagement platform",
+      "score": 95
+    },
+    "contacts": [
+      {
+        "name": "Jordan Novak",
+        "title": "CRO",
+        "email": "jordan.novak@summitcloud.example"
+      },
+      {
+        "name": "Casey Lee",
+        "title": "Director of Marketing",
+        "email": "casey.lee@summitcloud.example"
+      }
+    ]
+  },
+  {
+    "id": "ACC-041",
+    "name": "Harbor Analytics",
+    "domain": "harboranalytics.example",
+    "industry": "Cybersecurity",
+    "employees": 1013,
+    "html": "<html><head><title>Harbor Analytics</title>\n</head><body><h1>Harbor Analytics</h1></body></html>",
+    "openJobs": [
+      "Revenue Operations Manager",
+      "SDR",
+      "Account Executive"
+    ],
+    "intent": null,
+    "contacts": [
+      {
+        "name": "Avery Patel",
+        "title": "Head of Revenue Operations",
+        "email": "avery.patel@harboranalytics.example"
+      },
+      {
+        "name": "Taylor Chen",
+        "title": "CRO",
+        "email": "taylor.chen@harboranalytics.example"
+      }
+    ]
+  },
+  {
+    "id": "ACC-042",
+    "name": "Atlas Robotics",
+    "domain": "atlasrobotics.example",
+    "industry": "Cybersecurity",
+    "employees": 1222,
+    "html": "<html><head><title>Atlas Robotics</title>\n<script src=\"//js.hs-scripts.com/1234.js\"></script>\n<script src=\"https://j.6sc.co/6si.min.js\"></script>\n</head><body><h1>Atlas Robotics</h1></body></html>",
+    "openJobs": [
+      "Customer Success Manager"
+    ],
+    "intent": {
+      "topic": "CRM migration",
+      "score": 85
+    },
+    "contacts": [
+      {
+        "name": "Parker Chen",
+        "title": "CRO",
+        "email": "parker.chen@atlasrobotics.example"
+      },
+      {
+        "name": "Drew Brooks",
+        "title": "Sales Development Manager",
+        "email": "drew.brooks@atlasrobotics.example"
+      }
+    ]
+  },
+  {
+    "id": "ACC-043",
+    "name": "Pioneer Software",
+    "domain": "pioneersoftware.example",
+    "industry": "Fintech",
+    "employees": 382,
+    "html": "<html><head><title>Pioneer Software</title>\n<script src=\"//js.hs-scripts.com/1234.js\"></script>\n<link rel=\"preconnect\" href=\"https://login.salesforce.com\">\n</head><body><h1>Pioneer Software</h1></body></html>",
+    "openJobs": [
+      "Account Executive",
+      "Marketing Ops Specialist",
+      "Customer Success Manager"
+    ],
+    "intent": null,
+    "contacts": [
+      {
+        "name": "Parker Kim",
+        "title": "Head of Revenue Operations",
+        "email": "parker.kim@pioneersoftware.example"
+      },
+      {
+        "name": "Drew Chen",
+        "title": "Head of Revenue Operations",
+        "email": "drew.chen@pioneersoftware.example"
+      }
+    ]
+  },
+  {
+    "id": "ACC-044",
+    "name": "Bright Robotics",
+    "domain": "brightrobotics.example",
+    "industry": "Cybersecurity",
+    "employees": 174,
+    "html": "<html><head><title>Bright Robotics</title>\n</head><body><h1>Bright Robotics</h1></body></html>",
+    "openJobs": [
+      "Account Executive"
+    ],
+    "intent": {
+      "topic": "conversation intelligence",
+      "score": 98
+    },
+    "contacts": [
+      {
+        "name": "Reese Patel",
+        "title": "VP Sales",
+        "email": "reese.patel@brightrobotics.example"
+      },
+      {
+        "name": "Quinn Rossi",
+        "title": "Director of Marketing",
+        "email": "quinn.rossi@brightrobotics.example"
+      }
+    ]
+  },
+  {
+    "id": "ACC-045",
+    "name": "North Systems",
+    "domain": "northsystems.example",
+    "industry": "B2B SaaS",
+    "employees": 1795,
+    "html": "<html><head><title>North Systems</title>\n<script src=\"//js.hs-scripts.com/1234.js\"></script>\n<script src=\"https://app.gong.io/js/x.js\"></script>\n</head><body><h1>North Systems</h1></body></html>",
+    "openJobs": [
+      "Revenue Operations Manager",
+      "SDR",
+      "BDR Team Lead"
+    ],
+    "intent": {
+      "topic": "CRM migration",
+      "score": 69
+    },
+    "contacts": [
+      {
+        "name": "Casey Silva",
+        "title": "Director of Marketing",
+        "email": "casey.silva@northsystems.example"
+      },
+      {
+        "name": "Avery Brooks",
+        "title": "Director of Marketing",
+        "email": "avery.brooks@northsystems.example"
+      }
+    ]
+  },
+  {
+    "id": "ACC-046",
+    "name": "Blue Health",
+    "domain": "bluehealth.example",
+    "industry": "Logistics",
+    "employees": 477,
+    "html": "<html><head><title>Blue Health</title>\n<link rel=\"preconnect\" href=\"https://login.salesforce.com\">\n<script src=\"https://app.gong.io/js/x.js\"></script>\n</head><body><h1>Blue Health</h1></body></html>",
+    "openJobs": [
+      "Account Executive"
+    ],
+    "intent": {
+      "topic": "sales engagement platform",
+      "score": 71
+    },
+    "contacts": [
+      {
+        "name": "Casey Okafor",
+        "title": "Sales Development Manager",
+        "email": "casey.okafor@bluehealth.example"
+      },
+      {
+        "name": "Drew Silva",
+        "title": "Director of Marketing",
+        "email": "drew.silva@bluehealth.example"
+      }
+    ]
+  },
+  {
+    "id": "ACC-047",
+    "name": "Summit Systems",
+    "domain": "summitsystems.example",
+    "industry": "Healthtech",
+    "employees": 297,
+    "html": "<html><head><title>Summit Systems</title>\n<script src=\"//js.hs-scripts.com/1234.js\"></script>\n<link rel=\"preconnect\" href=\"https://login.salesforce.com\">\n</head><body><h1>Summit Systems</h1></body></html>",
+    "openJobs": [
+      "SDR"
+    ],
+    "intent": null,
+    "contacts": [
+      {
+        "name": "Jordan Okafor",
+        "title": "Sales Development Manager",
+        "email": "jordan.okafor@summitsystems.example"
+      },
+      {
+        "name": "Taylor Okafor",
+        "title": "VP Sales",
+        "email": "taylor.okafor@summitsystems.example"
+      }
+    ]
+  },
+  {
+    "id": "ACC-048",
+    "name": "Iron Labs",
+    "domain": "ironlabs.example",
+    "industry": "Healthtech",
+    "employees": 616,
+    "html": "<html><head><title>Iron Labs</title>\n</head><body><h1>Iron Labs</h1></body></html>",
+    "openJobs": [],
+    "intent": null,
+    "contacts": [
+      {
+        "name": "Riley Patel",
+        "title": "VP Sales",
+        "email": "riley.patel@ironlabs.example"
+      },
+      {
+        "name": "Parker Chen",
+        "title": "Director of Marketing",
+        "email": "parker.chen@ironlabs.example"
+      }
+    ]
+  },
+  {
+    "id": "ACC-049",
+    "name": "Granite Robotics",
+    "domain": "graniterobotics.example",
+    "industry": "Fintech",
+    "employees": 991,
+    "html": "<html><head><title>Granite Robotics</title>\n</head><body><h1>Granite Robotics</h1></body></html>",
+    "openJobs": [
+      "Revenue Operations Manager",
+      "Software Engineer",
+      "Account Executive"
+    ],
+    "intent": null,
+    "contacts": [
+      {
+        "name": "Drew Silva",
+        "title": "VP Sales",
+        "email": "drew.silva@graniterobotics.example"
+      },
+      {
+        "name": "Parker Kim",
+        "title": "CRO",
+        "email": "parker.kim@graniterobotics.example"
+      }
+    ]
+  },
+  {
+    "id": "ACC-050",
+    "name": "Cedar Cloud",
+    "domain": "cedarcloud.example",
+    "industry": "Healthtech",
+    "employees": 239,
+    "html": "<html><head><title>Cedar Cloud</title>\n<script src=\"https://j.6sc.co/6si.min.js\"></script>\n<link rel=\"preconnect\" href=\"https://login.salesforce.com\">\n</head><body><h1>Cedar Cloud</h1></body></html>",
+    "openJobs": [],
+    "intent": {
+      "topic": "sales engagement platform",
+      "score": 61
+    },
+    "contacts": [
+      {
+        "name": "Reese Lee",
+        "title": "VP Sales",
+        "email": "reese.lee@cedarcloud.example"
+      },
+      {
+        "name": "Jordan Garcia",
+        "title": "Director of Marketing",
+        "email": "jordan.garcia@cedarcloud.example"
+      }
+    ]
+  }
+]

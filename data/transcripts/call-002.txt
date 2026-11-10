@@ -1,0 +1,11 @@
+account: ACC-002
+seller: Sam
+---
+Sam: What prompted the look at pipeline tooling now?
+Morgan: We just posted a Revenue Operations Manager role. Whoever we hire inherits a HubSpot instance nobody has cleaned in two years.
+Sam: What breaks first?
+Morgan: Routing. Inbound demo requests sit for a day because ownership rules conflict.
+Morgan: We also use PipeForge for scoring but nobody trusts the scores.
+Sam: How does security review work on your side?
+Morgan: Anything touching the CRM goes through a SOC 2 check with legal review, usually three weeks.
+Sam: Then let us start that now. I will share our security packet today and book a technical session with your admin.
