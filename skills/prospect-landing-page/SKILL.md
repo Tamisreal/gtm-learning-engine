@@ -1,37 +1,39 @@
 ---
 name: prospect-landing-page
-description: "Builds one landing page per prospect from the same signals and angle as the email, so the link lands on a page about their situation."
-stage: TOFU
+description: "Every positive reply gets a landing page built for that prospect, answering what they asked, linked in the rep's follow-up."
+stage: Marketing
 ---
 
 # Prospect landing page
 
-Builds one landing page per prospect from the same signals and angle as the email, so the link lands on a page about their situation.
+Every positive reply gets a landing page built for that prospect. The rep's follow-up links to a page about their company, their situation, and the question they asked, instead of a generic deck.
 
 ## When to use
 
-Tier A and B accounts in an active sequence.
+A prospect replies positively to outbound. "Send me something I can share with my VP" is the moment a page beats an attachment.
 
 ## Judgment
 
-- The page must match the email's angle. A competitor-displacement email that links to a generic homepage wastes the click.
-- Show what you noticed (the signals) on the page. It proves the email was not a mail merge.
-- One call to action, tagged with account and angle so the booking traces back.
+- Build on the reply, not on the send. A page for every cold email is wasted work; a page for someone who raised their hand gets read and forwarded.
+- Answer their question first. If they asked how switching works, the page leads with switching.
+- Match the email's angle and show what you noticed (the signals). It proves the outreach was not a mail merge.
+- One call to action, tagged with account and angle so the booking traces back to the message that earned it.
 
 ## What good looks like
 
-A prospect clicks and sees their company name, the thing you noticed, and one way to book time.
+The prospect opens the follow-up, sees their company name, their own question answered, and one way to book time, and forwards it to their boss.
 
 See [example.md](example.md) for real output.
 
 ## In production
 
-Per-prospect pages built in Lovable from the same account data.
+A custom page built in Lovable for every positive reply, from the same account data as the email.
 
 ## Code
 
 - [engine/pages/landingPage.js](../../engine/pages/landingPage.js)
+- [data/replies.json](../../data/replies.json): synthetic positive replies that trigger the pages
 
 ```
-node engine/run.js
+node engine/run.js    # writes out/pages/<account>.html for each positive reply
 ```

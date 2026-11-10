@@ -1,8 +1,9 @@
-// One landing page per prospect, built from the same signals that wrote the email.
-// The email's link goes to a page that already speaks to that account's situation.
+// A positive reply gets a landing page built for that prospect: the email's angle, the
+// signals we noticed, and the question they asked in their reply. The rep sends the link
+// in the follow-up, so the next touch is about their situation, not a generic deck.
 //
 // In production these pages were built in Lovable. Here they are generated from a
-// template so the repo runs offline; the inputs (signals, angle, contact) are the same.
+// template so the repo runs offline; the inputs (signals, angle, contact, reply) are the same.
 const fs = require("fs");
 const path = require("path");
 
@@ -15,7 +16,7 @@ const HEADLINES = {
 
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 
-function render(row, signal) {
+function render(row, signal, reply) {
   const a = row.account;
   const contact = a.contacts[0];
   return `<!doctype html>
@@ -29,16 +30,17 @@ function render(row, signal) {
 <body>
   <p>Prepared for ${esc(contact.name)}, ${esc(contact.title)}</p>
   <h1>${esc(HEADLINES[row.angle](a, signal))}</h1>
-  <p>What we noticed about ${esc(a.name)}:</p>
+${reply ? `  <p><b>You asked:</b> &ldquo;${esc(reply.text)}&rdquo;</p>
+` : ""}  <p>What we noticed about ${esc(a.name)}:</p>
   <div>${row.signals.map((s) => `<span class="tag">${esc(s.label)}</span>`).join("")}</div>
   <a class="cta" href="#book?account=${esc(a.id)}&angle=${esc(row.angle)}">Book 20 minutes</a>
 </body></html>`;
 }
 
-function writePages(rows, signalFor, outDir) {
+function writePages(rows, signalFor, outDir, replies = []) {
   const dir = path.join(outDir, "pages");
   fs.mkdirSync(dir, { recursive: true });
-  for (const row of rows) fs.writeFileSync(path.join(dir, `${row.account.id}.html`), render(row, signalFor(row.angle, row.signals)));
+  for (const row of rows) fs.writeFileSync(path.join(dir, `${row.account.id}.html`), render(row, signalFor(row.angle, row.signals), replies.find((r) => r.accountId === row.account.id)));
   return dir;
 }
 

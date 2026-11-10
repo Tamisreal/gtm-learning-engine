@@ -1,0 +1,5 @@
+[
+  { "accountId": "ACC-002", "contact": "Morgan Chen", "angle": "competitor_displacement", "received": "2026-10-14", "text": "Interesting timing, we're up for renewal with our current vendor in Q1. What does switching actually involve?" },
+  { "accountId": "ACC-006", "contact": "Avery Silva", "angle": "hiring_signal", "received": "2026-10-15", "text": "We're hiring for this exact role right now. Send me something I can share with my VP." },
+  { "accountId": "ACC-003", "contact": "Casey Chen", "angle": "stack_fit", "received": "2026-10-16", "text": "Open to a conversation. How does this work with Salesforce?" }
+]

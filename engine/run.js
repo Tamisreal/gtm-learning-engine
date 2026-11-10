@@ -47,8 +47,11 @@ async function main() {
     await hs.upsert("company", row.account.id, fields.hubspot);
     report.push(`| ${row.tier} | ${row.account.name} | ${(row.score * 100).toFixed(1)}% | ${row.signals.map((x) => x.label).join("; ")} | ${row.angle} | ${msg.line} |`);
   }
-  const outbound = rows.filter((r) => r.tier !== "C" && r.angle);
-  report.push("", `Landing pages: ${outbound.length} written to ${path.relative(ROOT, writePages(outbound, signalFor, OUT))}/, one per prospect, matched to the email angle.`);
+  // Positive replies get a landing page built for them, linked in the rep's follow-up.
+  const replies = JSON.parse(fs.readFileSync(path.join(ROOT, "data", "replies.json"), "utf8"));
+  // The page uses the angle of the email they actually replied to.
+  const replied = rows.flatMap((r) => replies.filter((x) => x.accountId === r.account.id).map((x) => ({ ...r, angle: x.angle })));
+  report.push("", `Landing pages: ${replied.length} positive replies, ${replied.length} pages written to ${path.relative(ROOT, writePages(replied, signalFor, OUT, replies))}/, each answering what the prospect asked.`);
   const counts = { A: 0, B: 0, C: 0 };
   rows.forEach((r) => counts[r.tier]++);
   report.push("", `Tiers: A ${counts.A}, B ${counts.B}, C ${counts.C} (nurture, no outbound).`, "");

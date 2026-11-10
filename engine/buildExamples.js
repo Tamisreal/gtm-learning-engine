@@ -76,7 +76,7 @@ async function main() {
     await b.close();
     shot = true;
   } catch {}
-  write("prospect-landing-page", "one prospect's page", (shot ? "![landing page](example.png)\n\n" : "") + "Full HTML: [example.html](example.html). One page per Tier A and B account, headline matched to the email's angle.");
+  write("prospect-landing-page", "one prospect's page", (shot ? "![landing page](example.png)\n\n" : "") + "Full HTML: [example.html](example.html). Built when the prospect replied: \"" + require("../data/replies.json")[0].text + "\"");
 
   const proofOut = run("engine/proof/snapshot.js", "data centers", "ACC-001");
   const proofDir = path.join(ROOT, "out", "proof");
@@ -96,9 +96,6 @@ async function main() {
       "\n\n**Is it luck? Fifty seeds:** `node engine/experiments/rotation.js --trials 50`\n\n" +
       code(run("engine/experiments/rotation.js", "--trials", "50"))
   );
-  write("content-engine", "eight publishing cycles", code(run("engine/marketing/run.js", "--cycles", "8")));
-  write("competitor-monitor", "one scan and approval", code(run("engine/marketing/monitor.js")) + "\n\n" + code("$ node engine/marketing/monitor.js approve Q-C8\n" + run("engine/marketing/monitor.js", "approve", "Q-C8")));
-  write("search-demand", "a Search Console export", code(run("engine/marketing/searchDemand.js")));
   console.log("Examples written to skills/*/example.md");
 }
 
