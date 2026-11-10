@@ -1,5 +1,5 @@
 // The loop. Every touch outcome updates the signals that targeted it and the angle
-// that messaged it. Angle choice uses Thompson sampling: angles that book meetings get
+// that messaged it. Angle choice is a split test: angles that book meetings get
 // used more, but weaker angles still get tested in proportion to the uncertainty left.
 const { betaSample } = require("../rng");
 const { mean } = require("./state");

@@ -25,7 +25,6 @@ const code = (s) => "```\n" + s + "\n```";
 async function main() {
   for (const s of ["prospect-landing-page", "proof-screenshot"]) fs.mkdirSync(path.join(ROOT, "skills", s), { recursive: true });
   run("engine/learning/state.js", "--reset");
-  run("engine/simulate.js", "--save");
   run("engine/run.js");
   const report = fs.readFileSync(path.join(ROOT, "out", "report.md"), "utf8");
   const accounts = require("../data/accounts.json");
@@ -89,11 +88,17 @@ async function main() {
     code(proofOut) + (fs.existsSync(path.join(ROOT, "skills", "proof-screenshot", "example.png")) ? "\n\n**Screenshot embedded in the email:**\n\n![proof](example.png)" : "") + `\n\n**Email:**\n\nSubject: ${email.subject}\n\n` + email.html.replace(/<img[^>]*>/, "[screenshot]").replace(/<\/?p>/g, "").replace(/<\/?b>/g, "**")
   );
 
-  write("message-experiment", "a test that needed an extension to call", code(run("engine/experiments/abTest.js", "4")));
+  write(
+    "message-experiment",
+    "six segments, sixteen weeks",
+    "**One run, week by week:** `node engine/experiments/rotation.js`\n\n" +
+      code(run("engine/experiments/rotation.js")) +
+      "\n\n**Is it luck? Fifty seeds:** `node engine/experiments/rotation.js --trials 50`\n\n" +
+      code(run("engine/experiments/rotation.js", "--trials", "50"))
+  );
   write("content-engine", "eight publishing cycles", code(run("engine/marketing/run.js", "--cycles", "8")));
   write("competitor-monitor", "one scan and approval", code(run("engine/marketing/monitor.js")) + "\n\n" + code("$ node engine/marketing/monitor.js approve Q-C8\n" + run("engine/marketing/monitor.js", "approve", "Q-C8")));
   write("search-demand", "a Search Console export", code(run("engine/marketing/searchDemand.js")));
-  write("learning-loop", "ten cycles against a static playbook", code(run("engine/simulate.js")));
   console.log("Examples written to skills/*/example.md");
 }
 

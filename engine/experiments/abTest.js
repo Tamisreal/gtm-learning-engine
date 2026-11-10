@@ -1,6 +1,6 @@
 // Controlled message experiments: how a winning angle gets *declared*, not just favored.
 //
-// Thompson sampling (learning/feedback.js) routes day-to-day volume toward what looks
+// The always-on split test (learning/feedback.js) routes day-to-day volume toward what looks
 // best. That is good for pipeline but it never says "this angle won." This module does:
 // one segment, four angles, random split, fixed decision rules.
 //

@@ -1,6 +1,6 @@
 # GTM Learning Engine
 
-Thirteen GTM automations I've built across sales and marketing, rebuilt so you can read them, see their output, and run them. They share one feedback loop: every meeting, miss, and click changes who gets targeted and what they hear next.
+Twelve GTM automations I've built across sales and marketing, rebuilt so you can read them, see their output, and run them. The outbound program learns: every ICP and seniority gets several messages, losers get swapped out, and the winner gets all the volume.
 
 **Start with the table below.** Each row links to a skill folder containing a plain-English description of the judgment involved, a real example of the output, and links to the code.
 
@@ -31,8 +31,7 @@ Thirteen GTM automations I've built across sales and marketing, rebuilt so you c
 
 | When this happens | The system does this | See it |
 |---|---|---|
-| The team needs to know which message works | A controlled test of four angles with fixed rules: 400 delivered minimum, 95% confidence, one extension | [message-experiment](skills/message-experiment/) · [example](skills/message-experiment/example.md) |
-| Any outcome comes back | Updates how much it trusts each signal, angle and hook. Beats a static playbook by about 2x in simulation | [learning-loop](skills/learning-loop/) · [example](skills/learning-loop/example.md) |
+| Replies come back on outbound | Each ICP and seniority runs its own message library: losing messages are swapped out at 95% confidence, and the segment goes all in on the proven winner. 56% more positive replies than a static split in simulation | [message-experiment](skills/message-experiment/) · [example](skills/message-experiment/example.md) |
 
 ## How it fits together
 
@@ -44,8 +43,8 @@ Thirteen GTM automations I've built across sales and marketing, rebuilt so you c
         |                                        |
         +--------------- outcomes ---------------+
                             |
-                      LEARNING LOOP
-          what to target, which angle, which hook
+               MESSAGE EXPERIMENT (per ICP x seniority)
+          swap out losers, go all in on the winner
 ```
 
 ## In production
@@ -61,11 +60,9 @@ Here each system is a mock behind the same interface, so the whole thing runs wi
 
 **Deterministic first, LLM last.** String matching finds a competitor's script tag better than a model does, and costs nothing. The LLM writes language (opening lines, summaries) and always has a template fallback. Scores, tiers, routing and CRM writes never come from the LLM.
 
-**Learned weights, not guessed weights.** Every signal starts at the same weak prior. In the simulation the obvious signal (they run a CRM) is deliberately weak; the static playbook leads with it and the engine learns past it.
+**Segment, then test.** Messages are tested per ICP and seniority, because a blended winner can lose in every segment that matters.
 
-**Credit assignment.** A meeting on an account with four signals was not caused by all four. Credit is split by each signal's share of the predicted rate, so weak signals cannot look strong by riding along with strong ones.
-
-**Two loops, two jobs.** Experiments give a declared, defensible verdict per segment. Thompson sampling routes volume toward what currently looks best between experiments. Experiments set what the team believes; sampling earns while the next experiment runs.
+**Fixed rules for swapping and scaling.** Nothing is judged before 400 delivered. A message is retired, and a winner is scaled, only at 95% confidence. Bounces are checked before copy is blamed.
 
 **Guardrails fail closed.** Generated copy cannot publish with a banned word, an em dash, or a number that was not in the facts it was given.
 
@@ -76,7 +73,7 @@ Node 18+, no dependencies, no credentials.
 ```bash
 node engine/run.js                     # full sales pass, writes out/
 node engine/signals/scanSites.js       # competitor HTML scan (add --live domains.txt for real sites)
-node engine/simulate.js                # learning loop vs static playbook
+node engine/experiments/rotation.js    # message rotation vs static split (add --trials 50)
 node engine/marketing/run.js           # marketing loop
 node engine/slack/server.js research Granite Payments
 node engine/buildExamples.js           # regenerate every skills/*/example.md
@@ -86,8 +83,8 @@ Each skill's `SKILL.md` lists its own command. Optional: `ANTHROPIC_API_KEY` mak
 
 ## Known limits
 
-- **Confounding at small volume.** With 50 seed accounts, a signal present on most accounts stays overrated. Past roughly 500 touches, move to an online logistic regression with interaction terms.
-- **Outcome definition.** The loop optimizes meetings. In production it should optimize qualified pipeline, or it learns to book bad meetings.
+- **Synthetic reply rates.** The 56% lift comes from invented rates. It shows the rules work when messages really differ, not what a real program will see.
+- **Outcome definition.** The rotation optimizes positive replies. In production it should be checked against qualified meetings, or it learns to win replies that go nowhere.
 - **Mocks.** CRM, call recorder, enrichment, verification and publishing are mocked behind adapters. The n8n workflows use placeholder URLs for the verifier and data providers.
 
 ## Layout

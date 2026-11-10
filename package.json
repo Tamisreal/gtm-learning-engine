@@ -5,8 +5,8 @@
   "main": "engine/run.js",
   "scripts": {
     "start": "node engine/run.js",
-    "simulate": "node engine/simulate.js --cycles 6",
-    "reset": "node engine/learning/state.js --reset"
+    "reset": "node engine/learning/state.js --reset",
+    "experiment": "node engine/experiments/rotation.js"
   },
   "engines": { "node": ">=18" },
   "license": "MIT"

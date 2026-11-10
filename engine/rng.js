@@ -10,7 +10,7 @@ function mulberry32(seed) {
   };
 }
 
-// Beta sample via two Gamma draws (Marsaglia-Tsang). Used for Thompson sampling.
+// Beta sample via two Gamma draws (Marsaglia-Tsang). Used by the split test.
 function gamma(rand, k) {
   if (k < 1) return gamma(rand, k + 1) * Math.pow(rand(), 1 / k);
   const d = k - 1 / 3;

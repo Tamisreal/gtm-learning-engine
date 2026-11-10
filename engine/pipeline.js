@@ -1,4 +1,4 @@
-// Shared by run.js (one pass, real outputs) and simulate.js (many passes, learning curve).
+// One planning pass: score, tier, and choose an angle per account. Used by run.js.
 const { detectSignals } = require("./signals/detect");
 const { scoreAccount, tierAccounts } = require("./scoring/score");
 const { chooseAngle } = require("./learning/feedback");
