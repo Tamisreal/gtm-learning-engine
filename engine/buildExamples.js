@@ -46,7 +46,14 @@ async function main() {
     .slice(0, 6)
     .map((a) => `${a.name} (${a.domain})\n` + (detectSignals(a).map((s) => `  - ${s.label}   [${s.evidence}]`).join("\n") || "  - no signals"))
     .join("\n\n");
-  write("competitor-scan", "signals found on six accounts", "Every signal carries its evidence, so a rep can verify it in ten seconds.\n\n" + code(scan));
+  write(
+    "competitor-scan",
+    "scanning a territory's websites for competitor code",
+    "**Run:** `node engine/signals/scanSites.js` (offline on seed data) or `--live domains.txt` against real sites.\n\n" +
+      code(run("engine/signals/scanSites.js")) +
+      "\n\n**Signals per account, as the rest of the engine sees them:**\n\n" +
+      code(scan)
+  );
 
   const tofu = section(report, "| Tier | Account", "\n\nLanding pages").split("\n").slice(0, 8).join("\n");
   const sf = JSON.parse(fs.readFileSync(path.join(ROOT, "out", "crm_salesforce.json"), "utf8")).find((r) => r.objectType === "Account");

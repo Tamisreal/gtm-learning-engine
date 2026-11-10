@@ -12,7 +12,7 @@ Thirteen GTM automations I've built across sales and marketing, rebuilt so you c
 |---|---|---|
 | A rep types `/gtm research Acme` in Slack | Pulls the CRM record, signals, open roles, call history and whitespace into one reply | [account-research](skills/account-research/) · [example](skills/account-research/example.md) · [n8n](skills/account-research/n8n.json) |
 | A rep says "this email isn't working" in Slack | Checks in the background whether the person left and whether the email is valid, then fixes the CRM or suggests who replaced them | [bounce-check](skills/bounce-check/) · [example](skills/bounce-check/example.md) · [n8n](skills/bounce-check/n8n.json) |
-| A territory needs prioritizing | Scans every account's site source for competitor and stack fingerprints, plus hiring and intent, with evidence for each signal | [competitor-scan](skills/competitor-scan/) · [example](skills/competitor-scan/example.md) |
+| A territory needs prioritizing | **Competitor HTML scan:** fetches every account's website and subpages, reads the raw source for competitor embeds and stack fingerprints, and records the exact code snippet and URL as evidence | [competitor-scan](skills/competitor-scan/) · [example](skills/competitor-scan/example.md) |
 | An SDR is about to send a sequence | Picks the angle, writes the opening line, puts both in CRM fields the sequencer reads | [personalized-messaging](skills/personalized-messaging/) · [example](skills/personalized-messaging/example.md) |
 | The prospect clicks the link | They land on a page about their own situation, matched to the email's angle | [prospect-landing-page](skills/prospect-landing-page/) · [example](skills/prospect-landing-page/example.md) |
 | A prospect cares about a topic they can't measure | Runs it through the product, screenshots the result, puts it in the email: "data centers came up 2,576 times" | [proof-screenshot](skills/proof-screenshot/) · [example](skills/proof-screenshot/example.md) |
@@ -75,6 +75,7 @@ Node 18+, no dependencies, no credentials.
 
 ```bash
 node engine/run.js                     # full sales pass, writes out/
+node engine/signals/scanSites.js       # competitor HTML scan (add --live domains.txt for real sites)
 node engine/simulate.js                # learning loop vs static playbook
 node engine/marketing/run.js           # marketing loop
 node engine/slack/server.js research Granite Payments
