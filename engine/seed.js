@@ -1,6 +1,6 @@
 // Generates data/accounts.json: 50 synthetic accounts with raw HTML, open jobs,
 // intent topics, and contacts. No real companies or people.
-// Usage: node src/seed.js
+// Usage: node engine/seed.js
 const fs = require("fs");
 const path = require("path");
 const { mulberry32, pick } = require("./rng");

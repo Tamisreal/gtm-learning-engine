@@ -2,8 +2,8 @@
 // last 24 hours, and draft a response asset when a post is getting traction.
 // Nothing publishes on its own: drafts go to an approval queue and a person approves.
 //
-//   node src/marketing/monitor.js             scan and queue drafts
-//   node src/marketing/monitor.js approve ID  publish one queued draft
+//   node engine/marketing/monitor.js             scan and queue drafts
+//   node engine/marketing/monitor.js approve ID  publish one queued draft
 const fs = require("fs");
 const path = require("path");
 const { mulberry32, pick } = require("../rng");
@@ -73,6 +73,6 @@ if (require.main === module) {
     scan().then((r) => {
       console.log(`Scanned ${r.scanned} competitor posts, ${r.last24h} in the last 24h (${JSON.stringify(r.byMedia)}).`);
       for (const q of r.queued) console.log(`  ${q.id} [${q.status}] ${q.trigger.account} ${q.trigger.media} on "${q.trigger.topic}" (${q.trigger.engagement} eng)\n    -> ${q.draft.text}`);
-      console.log(`Queue: ${QUEUE}\nApprove with: node src/marketing/monitor.js approve <id>`);
+      console.log(`Queue: ${QUEUE}\nApprove with: node engine/marketing/monitor.js approve <id>`);
     });
 }

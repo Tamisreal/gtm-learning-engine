@@ -2,7 +2,7 @@
 //   research (what the market is talking about) -> choose hook (learned) -> draft
 //   -> guardrails -> publish with tracking -> outcomes -> update what the engine believes
 //
-// Usage: node src/marketing/run.js [--cycles 8]
+// Usage: node engine/marketing/run.js [--cycles 8]
 // Outcomes are simulated from hidden CTRs. Live, they come back from UTM-tagged clicks.
 const state = require("../learning/state");
 const { mulberry32 } = require("../rng");

@@ -1,0 +1,538 @@
+{
+  "name": "Slack: bounce check",
+  "nodes": [
+    {
+      "id": "n1",
+      "name": "Slack slash command",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        300
+      ],
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "gtm-bounce",
+        "responseMode": "responseNode",
+        "options": {}
+      }
+    },
+    {
+      "id": "n2",
+      "name": "Ack within 3s",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        220,
+        300
+      ],
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ { \"response_type\": \"ephemeral\", \"text\": \"Working on it...\" } }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "n3",
+      "name": "Parse email",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        440,
+        300
+      ],
+      "parameters": {
+        "jsCode": "const email = ($input.first().json.body.text || '').trim().toLowerCase();\nif (!/^[^@\\s]+@[^@\\s]+$/.test(email)) throw new Error('Usage: /gtm-bounce <email>');\nreturn [{ json: { email } }];"
+      }
+    },
+    {
+      "id": "n4",
+      "name": "Find contact",
+      "type": "n8n-nodes-base.salesforce",
+      "typeVersion": 1,
+      "position": [
+        660,
+        300
+      ],
+      "parameters": {
+        "resource": "search",
+        "operation": "query",
+        "query": "=SELECT Id, Name, Title, Email, AccountId, Account.Name, Account.Website FROM Contact WHERE Email = '{{ $json.email }}' LIMIT 1"
+      },
+      "credentials": {
+        "salesforceOAuth2Api": {
+          "id": "",
+          "name": "Salesforce account"
+        }
+      }
+    },
+    {
+      "id": "n5",
+      "name": "Verify email",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        880,
+        300
+      ],
+      "parameters": {
+        "method": "GET",
+        "url": "=https://YOUR-EMAIL-VERIFIER/verify?email={{ $json.Email }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      }
+    },
+    {
+      "id": "n6",
+      "name": "Still employed?",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1100,
+        300
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "https://YOUR-PEOPLE-DATA-PROVIDER/person/match",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ { name: $('Find contact').item.json.Name, company_domain: $('Find contact').item.json.Account.Website } }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      }
+    },
+    {
+      "id": "n7",
+      "name": "Left company?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1320,
+        300
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": false
+          },
+          "conditions": [
+            {
+              "leftValue": "={{ $json.current_company_domain }}",
+              "rightValue": "={{ $('Find contact').item.json.Account.Website }}",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "n8",
+      "name": "Mark left + stop cadence",
+      "type": "n8n-nodes-base.salesforce",
+      "typeVersion": 1,
+      "position": [
+        1560,
+        100
+      ],
+      "parameters": {
+        "resource": "contact",
+        "operation": "update",
+        "contactId": "={{ $('Find contact').item.json.Id }}",
+        "updateFields": {
+          "customFieldsUi": {
+            "customFieldsValues": [
+              {
+                "fieldId": "Status__c",
+                "value": "Left Company"
+              },
+              {
+                "fieldId": "Do_Not_Sequence__c",
+                "value": "true"
+              }
+            ]
+          }
+        }
+      },
+      "credentials": {
+        "salesforceOAuth2Api": {
+          "id": "",
+          "name": "Salesforce account"
+        }
+      }
+    },
+    {
+      "id": "n9",
+      "name": "Other contacts on account",
+      "type": "n8n-nodes-base.salesforce",
+      "typeVersion": 1,
+      "position": [
+        1780,
+        100
+      ],
+      "parameters": {
+        "resource": "search",
+        "operation": "query",
+        "query": "=SELECT Name, Title, Email FROM Contact WHERE AccountId = '{{ $('Find contact').item.json.AccountId }}' AND Id != '{{ $('Find contact').item.json.Id }}' AND Status__c != 'Left Company' LIMIT 3"
+      },
+      "credentials": {
+        "salesforceOAuth2Api": {
+          "id": "",
+          "name": "Salesforce account"
+        }
+      }
+    },
+    {
+      "id": "n10",
+      "name": "Format: left",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2000,
+        100
+      ],
+      "parameters": {
+        "jsCode": "const c = $('Find contact').first().json;\nconst others = $input.all().map(i => i.json).filter(o => o.Name);\nconst text = `*${c.Name}* has left ${c.Account.Name}. Removed from sequences.\\n` + (others.length ? 'Still there: ' + others.map(o => `${o.Name} (${o.Title})`).join(', ') : 'No active contacts left. Queued for sourcing.');\nreturn [{ json: { text } }];"
+      }
+    },
+    {
+      "id": "n11",
+      "name": "Email valid?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1560,
+        420
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {},
+          "conditions": [
+            {
+              "leftValue": "={{ $('Verify email').item.json.status }}",
+              "rightValue": "valid",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "n12",
+      "name": "Format: deliverability",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1780,
+        300
+      ],
+      "parameters": {
+        "jsCode": "const c = $('Find contact').first().json;\nreturn [{ json: { text: `${c.Name} is still at ${c.Account.Name} and ${c.Email} verifies. Likely a temporary bounce or spam filtering: check sending domain health.` } }];"
+      }
+    },
+    {
+      "id": "n13",
+      "name": "Waterfall: provider A",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1780,
+        540
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "https://PROVIDER-A/find-email",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ { name: $('Find contact').item.json.Name, domain: $('Find contact').item.json.Account.Website } }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "id": "n14",
+      "name": "Waterfall: provider B if A missed",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2000,
+        540
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $json.email && $json.email !== $('Find contact').item.json.Email ? 'https://SKIP' : 'https://PROVIDER-B/find-email' }}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ { name: $('Find contact').item.json.Name, domain: $('Find contact').item.json.Account.Website } }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "id": "n15",
+      "name": "Update email in SFDC",
+      "type": "n8n-nodes-base.salesforce",
+      "typeVersion": 1,
+      "position": [
+        2220,
+        540
+      ],
+      "parameters": {
+        "resource": "contact",
+        "operation": "update",
+        "contactId": "={{ $('Find contact').item.json.Id }}",
+        "updateFields": {
+          "email": "={{ $('Waterfall: provider A').item.json.email || $json.email }}"
+        }
+      },
+      "credentials": {
+        "salesforceOAuth2Api": {
+          "id": "",
+          "name": "Salesforce account"
+        }
+      }
+    },
+    {
+      "id": "n16",
+      "name": "Format: fixed",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2440,
+        540
+      ],
+      "parameters": {
+        "jsCode": "const c = $('Find contact').first().json;\nreturn [{ json: { text: `${c.Name} is still at ${c.Account.Name}. Old email failed verification; new email found and updated in Salesforce.` } }];"
+      }
+    },
+    {
+      "id": "n17",
+      "name": "Reply in Slack",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2660,
+        300
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Slack slash command').item.json.body.response_url }}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ { \"response_type\": \"in_channel\", \"text\": $json.text } }}",
+        "options": {}
+      }
+    }
+  ],
+  "connections": {
+    "Slack slash command": {
+      "main": [
+        [
+          {
+            "node": "Ack within 3s",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ack within 3s": {
+      "main": [
+        [
+          {
+            "node": "Parse email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse email": {
+      "main": [
+        [
+          {
+            "node": "Find contact",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Find contact": {
+      "main": [
+        [
+          {
+            "node": "Verify email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verify email": {
+      "main": [
+        [
+          {
+            "node": "Still employed?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Still employed?": {
+      "main": [
+        [
+          {
+            "node": "Left company?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Left company?": {
+      "main": [
+        [
+          {
+            "node": "Mark left + stop cadence",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Email valid?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mark left + stop cadence": {
+      "main": [
+        [
+          {
+            "node": "Other contacts on account",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Other contacts on account": {
+      "main": [
+        [
+          {
+            "node": "Format: left",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format: left": {
+      "main": [
+        [
+          {
+            "node": "Reply in Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Email valid?": {
+      "main": [
+        [
+          {
+            "node": "Format: deliverability",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Waterfall: provider A",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format: deliverability": {
+      "main": [
+        [
+          {
+            "node": "Reply in Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Waterfall: provider A": {
+      "main": [
+        [
+          {
+            "node": "Waterfall: provider B if A missed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Waterfall: provider B if A missed": {
+      "main": [
+        [
+          {
+            "node": "Update email in SFDC",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update email in SFDC": {
+      "main": [
+        [
+          {
+            "node": "Format: fixed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format: fixed": {
+      "main": [
+        [
+          {
+            "node": "Reply in Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {}
+}

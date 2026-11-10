@@ -1,7 +1,7 @@
 // Two ways to run the Slack bot:
 //
-//   node src/slack/server.js "research Harbor Health"     CLI, no Slack needed
-//   SLACK_SIGNING_SECRET=... node src/slack/server.js     HTTP endpoint for a /gtm slash command
+//   node engine/slack/server.js "research Harbor Health"     CLI, no Slack needed
+//   SLACK_SIGNING_SECRET=... node engine/slack/server.js     HTTP endpoint for a /gtm slash command
 //
 // Slash commands must answer within 3 seconds, so the server acks immediately and
 // posts the real answer to Slack's response_url when the background check finishes.

@@ -1,0 +1,267 @@
+{
+  "name": "Slack: account research",
+  "nodes": [
+    {
+      "id": "n1",
+      "name": "Slack slash command",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        300
+      ],
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "gtm-research",
+        "responseMode": "responseNode",
+        "options": {}
+      }
+    },
+    {
+      "id": "n2",
+      "name": "Ack within 3s",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        220,
+        300
+      ],
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ { \"response_type\": \"ephemeral\", \"text\": \"Working on it...\" } }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "n3",
+      "name": "Account by name",
+      "type": "n8n-nodes-base.salesforce",
+      "typeVersion": 1,
+      "position": [
+        440,
+        300
+      ],
+      "parameters": {
+        "resource": "search",
+        "operation": "query",
+        "query": "=SELECT Id, Name, Industry, NumberOfEmployees, Website, Owner.Name, (SELECT Name, Title FROM Contacts LIMIT 5), (SELECT Name, StageName, Amount, CloseDate FROM Opportunities WHERE IsClosed = false) FROM Account WHERE Name = '{{ ($json.body.text || '').trim().replace(/'/g, \"\\\\'\") }}' LIMIT 1"
+      },
+      "credentials": {
+        "salesforceOAuth2Api": {
+          "id": "",
+          "name": "Salesforce account"
+        }
+      }
+    },
+    {
+      "id": "n4",
+      "name": "Recent activity",
+      "type": "n8n-nodes-base.salesforce",
+      "typeVersion": 1,
+      "position": [
+        660,
+        300
+      ],
+      "parameters": {
+        "resource": "search",
+        "operation": "query",
+        "query": "=SELECT Subject, ActivityDate, Description FROM Task WHERE AccountId = '{{ $json.Id }}' ORDER BY ActivityDate DESC LIMIT 5"
+      },
+      "credentials": {
+        "salesforceOAuth2Api": {
+          "id": "",
+          "name": "Salesforce account"
+        }
+      },
+      "alwaysOutputData": true
+    },
+    {
+      "id": "n5",
+      "name": "Gong calls for account",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        880,
+        300
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.gong.io/v2/calls/extensive",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ { filter: { fromDateTime: $now.minus({ days: 90 }).toISO() }, contentSelector: { context: 'Extended', exposedFields: { content: { brief: true, keyPoints: true } } } } }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBasicAuth",
+        "options": {}
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "id": "n6",
+      "name": "Collect facts",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1100,
+        300
+      ],
+      "parameters": {
+        "jsCode": "const a = $('Account by name').first().json;\nif (!a.Id) return [{ json: { facts: null, text: 'No account with that exact name.' } }];\nconst acts = $('Recent activity').all().map(i => i.json).filter(t => t.Subject);\nconst calls = ($input.first().json.calls || []).filter(c => (c.context || []).some(x => JSON.stringify(x).includes(a.Id))).slice(0, 3);\nconst facts = [\n  `${a.Name}: ${a.Industry}, ~${a.NumberOfEmployees} employees, owner ${a.Owner?.Name}`,\n  `Contacts: ${(a.Contacts?.records || []).map(c => `${c.Name} (${c.Title})`).join(', ')}`,\n  `Open opps: ${(a.Opportunities?.records || []).map(o => `${o.Name} ${o.StageName} $${o.Amount}`).join('; ') || 'none'}`,\n  `Recent activity: ${acts.map(t => `${t.ActivityDate} ${t.Subject}`).join('; ') || 'none'}`,\n  ...calls.map(c => `Call ${c.metaData?.started}: ${c.content?.brief || ''}`),\n].join('\\n');\nreturn [{ json: { facts } }];"
+      }
+    },
+    {
+      "id": "n7",
+      "name": "Claude: summarize facts only",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1320,
+        300
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.anthropic.com/v1/messages",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "anthropic-version",
+              "value": "2023-06-01"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ { model: 'claude-sonnet-5-5', max_tokens: 300, messages: [{ role: 'user', content: 'Using ONLY these facts, write 2 sentences: why this account is worth time now, and the best first move. Do not add facts.\\n\\n' + $json.facts }] } }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "n8",
+      "name": "Format reply",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1540,
+        300
+      ],
+      "parameters": {
+        "jsCode": "const facts = $('Collect facts').first().json.facts;\nconst take = $input.first().json.content?.[0]?.text || '';\nreturn [{ json: { text: facts ? `${facts}\\n\\n_Take:_ ${take}` : $('Collect facts').first().json.text } }];"
+      }
+    },
+    {
+      "id": "n9",
+      "name": "Reply in Slack",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1760,
+        300
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Slack slash command').item.json.body.response_url }}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ { \"response_type\": \"in_channel\", \"text\": $json.text } }}",
+        "options": {}
+      }
+    }
+  ],
+  "connections": {
+    "Slack slash command": {
+      "main": [
+        [
+          {
+            "node": "Ack within 3s",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ack within 3s": {
+      "main": [
+        [
+          {
+            "node": "Account by name",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Account by name": {
+      "main": [
+        [
+          {
+            "node": "Recent activity",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Recent activity": {
+      "main": [
+        [
+          {
+            "node": "Gong calls for account",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gong calls for account": {
+      "main": [
+        [
+          {
+            "node": "Collect facts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Collect facts": {
+      "main": [
+        [
+          {
+            "node": "Claude: summarize facts only",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Claude: summarize facts only": {
+      "main": [
+        [
+          {
+            "node": "Format reply",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format reply": {
+      "main": [
+        [
+          {
+            "node": "Reply in Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {}
+}

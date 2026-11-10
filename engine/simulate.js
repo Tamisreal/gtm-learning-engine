@@ -2,7 +2,7 @@
 // meetings. The engine starts knowing nothing (equal priors), sends a batch each cycle,
 // observes outcomes, and updates. Compare against a static team that never learns.
 //
-// Usage: node src/simulate.js [--cycles 10] [--runs 30] [--save]
+// Usage: node engine/simulate.js [--cycles 10] [--runs 30] [--save]
 const fs = require("fs");
 const path = require("path");
 const { mulberry32 } = require("./rng");

@@ -11,7 +11,7 @@
 // screenshot was taken of the real internal product. Playwright is optional:
 //   npm i playwright && npx playwright install chromium
 //
-// Usage: node src/proof/snapshot.js "data centers" ACC-001
+// Usage: node engine/proof/snapshot.js "data centers" ACC-001
 const fs = require("fs");
 const path = require("path");
 const { mulberry32, pick } = require("../rng");

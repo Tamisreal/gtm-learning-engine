@@ -11,7 +11,7 @@
 //   - Deliverability is checked before copy gets blamed: an arm bouncing over 4%
 //     is a list problem, not a message problem.
 //
-// Usage: node src/experiments/abTest.js [seed]
+// Usage: node engine/experiments/abTest.js [seed]
 const { mulberry32 } = require("../rng");
 const { ANGLES } = require("../config");
 

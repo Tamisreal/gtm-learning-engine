@@ -4,7 +4,7 @@
 //   BOFU  analyze call transcripts -> write to CRM -> raise expansion tasks
 //   LOOP  ingest outcomes (if provided) -> update what the engine believes
 //
-// Usage: node src/run.js [--outcomes data/outcomes.json]
+// Usage: node engine/run.js [--outcomes data/outcomes.json]
 const fs = require("fs");
 const path = require("path");
 const { mulberry32 } = require("./rng");

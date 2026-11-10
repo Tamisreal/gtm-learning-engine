@@ -2,11 +2,11 @@
   "name": "gtm-learning-engine",
   "version": "0.1.0",
   "description": "A full-funnel GTM system (TOFU to BOFU) where every outcome feeds back into targeting and messaging.",
-  "main": "src/run.js",
+  "main": "engine/run.js",
   "scripts": {
-    "start": "node src/run.js",
-    "simulate": "node src/simulate.js --cycles 6",
-    "reset": "node src/learning/state.js --reset"
+    "start": "node engine/run.js",
+    "simulate": "node engine/simulate.js --cycles 6",
+    "reset": "node engine/learning/state.js --reset"
   },
   "engines": { "node": ">=18" },
   "license": "MIT"
